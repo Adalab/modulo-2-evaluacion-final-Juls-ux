@@ -2,16 +2,19 @@
 
 //Seccion variables
 const characterUl = document.querySelector('.js_characterUl ');
+const defaultImage = 'https://via.placeholder.com/210x295/ffffff/555555/'; 
 
-let AllCharachters = [];
+let AllCharachters = []; 
 
 
 
 //Seccion Funciones
 const renderOneCharacter = (characterObj) =>{
+    const imageUrl = characterObj.imageUrl ? characterObj.imageUrl : defaultImage;
+
     const html = `
-        <li class="main__li">
-        <img class="main__character-img" src="${characterObj.imageUrl}" alt="imagen Achilles">
+        <li class="main__li">           
+        <img class="main__character-img" src="${imageUrl}" alt="imagen ${characterObj.name}">
         <h2 class="main__header-2">${characterObj.name}</h2>
         </li>`
 
