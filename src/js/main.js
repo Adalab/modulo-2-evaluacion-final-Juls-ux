@@ -1026,15 +1026,12 @@ const AllCharachters = [
 const renderOneCharacter = (characterObj) =>{
     characterUl.innerHTML += `
 <li class="main__li">
-      <img src="${characterObj.imageUrl}" alt="imagen Achilles">
+      <img class="main__character-img" src="${characterObj.imageUrl}" alt="imagen Achilles">
       <h2 class="main__header-2">${characterObj.name}</h2>
     </li>`
 }
+//Bucle for add all characters
+for(const characterObj of AllCharachters ) {
+    renderOneCharacter(characterObj);
+}
 
-let characterObj = AllCharachters [0]
-
-renderOneCharacter(characterObj);
-
-characterObj = AllCharachters [1]
-
-renderOneCharacter(characterObj);

@@ -28,4 +28,13 @@
     border: 1px solid #ccc;
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
   }
+
+  &__character-img {
+    width: 300px;  /* Ancho fijo */
+    height: 300px; /* Alto fijo */
+    object-fit: cover;  
+    image-rendering: optimizeQuality;
+    position: center; 
+  background-repeat: no-repeat; 
+  }
 }
