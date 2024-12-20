@@ -13,9 +13,9 @@ const renderOneCharacter = (characterObj) =>{
     const imageUrl = characterObj.imageUrl ? characterObj.imageUrl : defaultImage;
 
     const html = `
-        <li class="main__li">           
+        <li class="js_mainList main__li __favourite">           
         <img class="main__character-img" src="${imageUrl}" alt="imagen ${characterObj.name}">
-        <h2 class="main__header-2">${characterObj.name}</h2>
+        <h3 class="main__header-3">${characterObj.name}</h2>
         </li>`
 
     return html;
@@ -26,12 +26,24 @@ const renderAllCharacters = () => {
     for (const characterObj of AllCharachters ) {
         html += renderOneCharacter(characterObj);
     
-    }
-    
+    } 
     characterUl.innerHTML = html;
+
+    //Crear evento para marcar favoritas. Importante crear la funcion
+    const AllCharacterList  = document.querySelectorAll('.js_mainList');
+    for(const li of AllCharacterList) {
+
+        li.addEventListener('click', handleFavourite);
+    }
 }
 
+const handleFavourite = (ev) => {
+
+    ev.currentTarget.classList.toggle('main__favourite');
+
+}
 //Seccion de eventos
+
 
 //Cuando carga la página
 
