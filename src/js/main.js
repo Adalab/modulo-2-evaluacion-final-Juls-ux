@@ -2,7 +2,9 @@
 
 //Seccion variables
 const characterUl = document.querySelector('.js_characterUl ');
-const defaultImage = 'https://via.placeholder.com/210x295/ffffff/555555/'; 
+const js_ulFav  = document.querySelector('.js_ulFav ');
+
+const defaultImage = 'https://via.placeholder.com/210x295/ffffff/555555/?text=Disney'; 
 
 let AllCharachters = []; 
 
@@ -10,10 +12,17 @@ let AllCharachters = [];
 
 //Seccion Funciones
 const renderOneCharacter = (characterObj) =>{
-    const imageUrl = characterObj.imageUrl ? characterObj.imageUrl : defaultImage;
+        let imageUrl;
+
+    if (characterObj.imageUrl) {
+        imageUrl = characterObj.imageUrl;
+    } else {
+        imageUrl = defaultImage;
+    }
+
 
     const html = `
-        <li class="js_mainList main__li __favourite">           
+        <li class="js_mainList main__li __favourite" id="${characterObj._id}" >           
         <img class="main__character-img" src="${imageUrl}" alt="imagen ${characterObj.name}">
         <h3 class="main__header-3">${characterObj.name}</h2>
         </li>`
@@ -38,8 +47,15 @@ const renderAllCharacters = () => {
 }
 
 const handleFavourite = (ev) => {
+    console.log(ev.currentTarget.id);
 
     ev.currentTarget.classList.toggle('main__favourite');
+
+    //Gancho y find
+    const favouriteId = ev.currentTarget.id;
+    
+    const liFav = renderOneCharacter();
+    js_ulFav.innerHTML=liFav;
 
 }
 //Seccion de eventos
