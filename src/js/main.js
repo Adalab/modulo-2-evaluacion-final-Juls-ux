@@ -1024,14 +1024,23 @@ const AllCharachters = [
 
 //Seccion Funciones
 const renderOneCharacter = (characterObj) =>{
-    characterUl.innerHTML += `
-<li class="main__li">
-      <img class="main__character-img" src="${characterObj.imageUrl}" alt="imagen Achilles">
-      <h2 class="main__header-2">${characterObj.name}</h2>
-    </li>`
+    const html = `
+        <li class="main__li">
+        <img class="main__character-img" src="${characterObj.imageUrl}" alt="imagen Achilles">
+        <h2 class="main__header-2">${characterObj.name}</h2>
+        </li>`
+
+    return html;
 }
-//Bucle for add all characters
-for(const characterObj of AllCharachters ) {
-    renderOneCharacter(characterObj);
+
+const renderAllCharacters = () => {
+    let html ='' ;
+    for(const characterObj of AllCharachters ) {
+        html += renderOneCharacter(characterObj);
+    
+    }
+    
+    characterUl.innerHTML = html;
 }
+renderAllCharacters();
 
