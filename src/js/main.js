@@ -4,6 +4,9 @@
 const characterUl = document.querySelector('.js_characterUl ');
 const js_ulFav  = document.querySelector('.js_ulFav ');
 
+const searchBtn = document.querySelector('.js_searchBtn');
+const inputFilter  = document.querySelector('.js_inputFilter ');
+
 const defaultImage = 'https://via.placeholder.com/210x295/ffffff/555555/?text=Disney'; 
 
 let AllCharachters = []; 
@@ -32,7 +35,7 @@ const renderOneCharacter = (characterObj) =>{
     return html;
 }
 
-const renderAllCharacters = () => {
+const renderAllCharacters = (charactersToRender = AllCharachters) => {
     let html ='' ;
     for (const characterObj of AllCharachters ) {
         html += renderOneCharacter(characterObj);
@@ -83,6 +86,7 @@ const handleFavourite = (ev) => {
     //const liFav = renderOneCharacter(clickedCharacterFavourite);
 
     favourites.push(clickedCharacterFavourite);
+   
     renderFavourites(); 
 
     } else {
@@ -94,9 +98,19 @@ const handleFavourite = (ev) => {
     localStorage.setItem('favouritesCharacter', JSON.stringify(favourites));
 }
 
-
+const filterCharacter = (ev) => {
+    ev.preventDefault();
+    const filterText = inputFilter.value.toLowerCase();
+    const filteredCharacter = AllCharachters.filter((oneCharacter) =>
+        oneCharacter.name.toLowerCase().includes(filterText)
+    );
+  
+    
+    renderAllCharacters (filteredCharacter);
+    console.log(filteredCharacter);   
+}
 //SECCION DE EVENTOS
-
+searchBtn.addEventListener('click', filterCharacter);
 
 //AL CARGAR LA PÁGINA
 
