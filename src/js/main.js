@@ -66,19 +66,19 @@ const handleFavourite = (ev) => {
     console.log(ev.currentTarget.id);
 
     //Gancho y find
-    const favouriteId = String(ev.currentTarget.id);
+    const favouriteId = parseInt(ev.currentTarget.id);
     ev.currentTarget.classList.toggle('main__favourite');
 
     console.log(favouriteId);
     console.log(AllCharachters);
     
     //Buscamos en todos
-    const clickedCharacterFavourite = AllCharachters.find((eachCharacter) => String(eachCharacter._id) === favouriteId);
+    const clickedCharacterFavourite = AllCharachters.find((eachCharacter) => (eachCharacter._id) === favouriteId);
 
     console.log(clickedCharacterFavourite);
 
     //Buscamos en favoritos
-    const favouritesCharacter = favourites.find((eachCharacter) => String(eachCharacter._id) === favouriteId);
+    const favouritesCharacter = favourites.find((eachCharacter) => (eachCharacter._id) === favouriteId);
     console.log('clickedCharacterFavouritessssssssss');
 
     if (favouritesCharacter === undefined){
@@ -98,17 +98,32 @@ const handleFavourite = (ev) => {
     localStorage.setItem('favouritesCharacter', JSON.stringify(favourites));
 }
 
-const filterCharacter = (ev) => {
-    ev.preventDefault();
-    const filterText = inputFilter.value.toLowerCase();
-    const filteredCharacter = AllCharachters.filter((oneCharacter) =>
-        oneCharacter.name.toLowerCase().includes(filterText)
-    );
-  
-    
-    renderAllCharacters (filteredCharacter);
-    console.log(filteredCharacter);   
+
+
+
+const renderfilteredCharacter = (filteredCharacter) => {
+    let html ='' ;
+    for (const characterObj of filteredCharacter ) {
+        html += renderOneCharacter(characterObj);
+    } 
+    characterUl.innerHTML = html;
+
 }
+
+const filterCharacter = (ev) => {
+    console.log('hola si funciona');   
+    console.log(ev.currentTarget);  
+    ev.preventDefault();
+
+    const filterText = inputFilter.value.toLowerCase();
+
+    const filteredCharacter = AllCharachters.filter((oneCharacter) =>
+    oneCharacter.name.toLowerCase().includes(filterText)); 
+
+    renderfilteredCharacter(filteredCharacter);
+    
+}
+
 //SECCION DE EVENTOS
 searchBtn.addEventListener('click', filterCharacter);
 
