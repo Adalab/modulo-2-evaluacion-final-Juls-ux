@@ -78,26 +78,30 @@ const handleFavourite = (ev) => {
     console.log(clickedCharacterFavourite);
 
     //Buscamos en favoritos
-    const favouritesCharacter = favourites.find((eachCharacter) => (eachCharacter._id) === favouriteId);
+    const favouritesIndex = favourites.findIndex(
+        (character) => character._id === favouriteId
+    );
     console.log('clickedCharacterFavouritessssssssss');
+    
 
-    if (favouritesCharacter === undefined){
-            //Añadir al html
-    //const liFav = renderOneCharacter(clickedCharacterFavourite);
+    if (favouritesIndex === -1) {
 
-    favourites.push(clickedCharacterFavourite);
-   
-    renderFavourites(); 
+        
+        const clickedCharacter = AllCharachters.find(
+            (character) => character._id === favouriteId
+        );
 
+        if (clickedCharacter) {
+            favourites.push(clickedCharacter);
+        }
     } else {
-        //Quitar array favoritos
-        favourites.splice(favouritesCharacter, 1)
-        //quitar del html
-        renderFavourites(); 
+      
+        favourites.splice(favouritesIndex, 1);
     }
-    localStorage.setItem('favouritesCharacter', JSON.stringify(favourites));
-}
 
+    // Renderizar favoritos actualizados
+    renderFavourites();
+};
 
 
 
