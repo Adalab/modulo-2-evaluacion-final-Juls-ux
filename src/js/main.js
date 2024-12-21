@@ -74,6 +74,8 @@ const handleFavourite = (ev) => {
 
     favourites.push(clickedCharacterFavourite);
 
+    } else {
+        
     }
 
 
