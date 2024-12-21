@@ -54,7 +54,7 @@ const renderFavourites = ()=> {
     for(const characterObj of favourites) {
         html += renderOneCharacter(characterObj);
     }
-    js_ulFav.innerHTML=html;
+    js_ulFav.innerHTML = html;
     console.log('funciona al clikcar');
 }
 
@@ -80,7 +80,7 @@ const handleFavourite = (ev) => {
 
     if (favouritesCharacter === undefined){
             //Añadir al html
-    const liFav = renderOneCharacter(clickedCharacterFavourite);
+    //const liFav = renderOneCharacter(clickedCharacterFavourite);
 
     favourites.push(clickedCharacterFavourite);
     renderFavourites(); 
@@ -90,13 +90,10 @@ const handleFavourite = (ev) => {
         favourites.splice(favouritesCharacter, 1)
         //quitar del html
         renderFavourites(); 
-
     }
-
-
-
-
+    localStorage.setItem('favouritesCharacter', JSON.stringify(favourites));
 }
+
 
 //SECCION DE EVENTOS
 
@@ -114,3 +111,7 @@ fetch ('//api.disneyapi.dev/character?pageSize=50')
         renderAllCharacters();
     });
    
+
+    favourites= JSON.parse(localStorage.getItem('favouritesCharacter'))
+    renderFavourites(); 
+  
