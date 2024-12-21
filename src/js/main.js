@@ -7,12 +7,14 @@ const js_ulFav  = document.querySelector('.js_ulFav ');
 const defaultImage = 'https://via.placeholder.com/210x295/ffffff/555555/?text=Disney'; 
 
 let AllCharachters = []; 
+let favourites = [];
 
 
 
 //Seccion Funciones
 const renderOneCharacter = (characterObj) =>{
-        let imageUrl;
+        
+    let imageUrl;
 
     if (characterObj.imageUrl) {
         imageUrl = characterObj.imageUrl;
@@ -49,15 +51,36 @@ const renderAllCharacters = () => {
 const handleFavourite = (ev) => {
     console.log(ev.currentTarget.id);
 
+    //Gancho y find
+    const favouriteId = String(ev.currentTarget.id);
     ev.currentTarget.classList.toggle('main__favourite');
 
-    //Gancho y find
-    const favouriteId = ev.currentTarget.id;
+    console.log(favouriteId);
+    console.log(AllCharachters);
     
-    const liFav = renderOneCharacter();
-    js_ulFav.innerHTML=liFav;
+    //Buscamos en todos
+    const clickedCharacterFavourite = AllCharachters.find((eachCharacter) => String(eachCharacter._id) === favouriteId);
+
+    console.log(clickedCharacterFavourite);
+
+    //Buscamos en favoritos
+    const favouritesCharacter = favourites.find((eachCharacter) => String(eachCharacter._id) === favouriteId);
+    console.log('clickedCharacterFavouritessssssssss');
+
+    if (favouritesCharacter === undefined){
+            //Añadir al html
+    const liFav = renderOneCharacter(clickedCharacterFavourite);
+    js_ulFav.innerHTML+=liFav;
+
+    favourites.push(clickedCharacterFavourite);
+
+    }
+
+
+
 
 }
+
 //Seccion de eventos
 
 

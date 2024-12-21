@@ -6,9 +6,14 @@
     background-size: cover;      
     background-position: center; 
     background-repeat: no-repeat;
-    
-    margin-bottom: 100px;
     position: relative;
+    margin-bottom: 100px;
+    
+  &__section-form {
+      align-items: end;
+      position: relative;
+      top: 340px;
+  } 
     
   
   &__form {
@@ -20,8 +25,7 @@
     padding: 20px 100px;
     margin-inline: 80px;;
     gap: 5px;
-    position: relative;
-    top: 280px;
+   
   }
   
   &__input-search {

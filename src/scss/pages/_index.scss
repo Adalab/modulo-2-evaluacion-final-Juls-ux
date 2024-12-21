@@ -6,6 +6,13 @@
   flex-direction: row;
   justify-content: space-between;
 
+  
+
+  &__fav-ul {
+    background-color: salmon;
+    list-style: none;
+  }
+
 
   &__ul-list {
     display: grid;
@@ -67,3 +74,4 @@
   height: 60vh;
   padding-block: 2;
 }
+
