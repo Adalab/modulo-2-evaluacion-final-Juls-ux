@@ -81,10 +81,9 @@ const handleFavourite = (ev) => {
     if (favouritesCharacter === undefined){
             //Añadir al html
     const liFav = renderOneCharacter(clickedCharacterFavourite);
-    js_ulFav.innerHTML+=liFav;
-    renderFavourites(); 
 
     favourites.push(clickedCharacterFavourite);
+    renderFavourites(); 
 
     } else {
         //Quitar array favoritos
