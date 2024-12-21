@@ -1,6 +1,6 @@
 'use strict';
 
-//Seccion variables
+//SECCIÓN DE VARIABLES
 const characterUl = document.querySelector('.js_characterUl ');
 const js_ulFav  = document.querySelector('.js_ulFav ');
 
@@ -11,7 +11,7 @@ let favourites = [];
 
 
 
-//Seccion Funciones
+//SECCIÓN DE FUNCIONES
 const renderOneCharacter = (characterObj) =>{
         
     let imageUrl;
@@ -40,6 +40,7 @@ const renderAllCharacters = () => {
     } 
     characterUl.innerHTML = html;
 
+
     //Crear evento para marcar favoritas. Importante crear la funcion
     const AllCharacterList  = document.querySelectorAll('.js_mainList');
     for(const li of AllCharacterList) {
@@ -47,6 +48,16 @@ const renderAllCharacters = () => {
         li.addEventListener('click', handleFavourite);
     }
 }
+
+const renderFavourites = ()=> {
+    let html ='';
+    for(const characterObj of favourites) {
+        html += renderOneCharacter(characterObj);
+    }
+    js_ulFav.innerHTML=html;
+    console.log('funciona al clikcar');
+}
+
 
 const handleFavourite = (ev) => {
     console.log(ev.currentTarget.id);
@@ -71,11 +82,16 @@ const handleFavourite = (ev) => {
             //Añadir al html
     const liFav = renderOneCharacter(clickedCharacterFavourite);
     js_ulFav.innerHTML+=liFav;
+    renderFavourites(); 
 
     favourites.push(clickedCharacterFavourite);
 
     } else {
-        
+        //Quitar array favoritos
+        favourites.splice(favouritesCharacter, 1)
+        //quitar del html
+        renderFavourites(); 
+
     }
 
 
@@ -83,10 +99,10 @@ const handleFavourite = (ev) => {
 
 }
 
-//Seccion de eventos
+//SECCION DE EVENTOS
 
 
-//Cuando carga la página
+//AL CARGAR LA PÁGINA
 
 
 fetch ('//api.disneyapi.dev/character?pageSize=50')
