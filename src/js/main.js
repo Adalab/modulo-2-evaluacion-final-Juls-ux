@@ -80,12 +80,12 @@ const handleFavourite = (ev) => {
 
 
     //Buscamos en todos
-    const clickedCharacterFavourite = AllCharachters.find((eachCharacter) => parseInt(eachCharacter._id) === favouriteId);
+    const clickedCharacterFavourite = AllCharachters.find((eachCharacter) => (eachCharacter._id) === favouriteId);
     console.log(clickedCharacterFavourite);
 
     //Buscamos en favoritos
 
-    const favouritesIndex = favourites.findIndex((eachCharacter) => parseInt(eachCharacter._id) === favouriteId);
+    const favouritesIndex = favourites.findIndex((eachCharacter) => (eachCharacter._id) === favouriteId);
 
 
     if (favouritesIndex === -1) {
@@ -131,9 +131,11 @@ const handleCkickBtn = (ev) => {
 
 
 const deleteBtn =(ev) => {
-    let html = '';
-
-    ulFav.innerHTML = html;
+    favourites = []; 
+    localStorage.removeItem('favouritesCharacter'); // Limpiar el localStorage
+    ulFav.innerHTML = '';
+    renderAllCharacters();
+    console.log('Los favoritos han sido eliminados.');
 }
 
 

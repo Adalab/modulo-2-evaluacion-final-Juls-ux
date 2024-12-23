@@ -9,7 +9,13 @@
     flex-direction: column;
     align-items: center;
   }
-
+  &__btn-borrar{
+    background-color: black;
+    color: white;
+    font-weight:500;
+    border: none;
+    padding: 10px 40px;
+  }
   &__fav-header{
     display: flex;
     flex-direction: row;
@@ -18,11 +24,18 @@
   &__fav-ul {
     background-color: salmon;
     list-style: none;
+
+    .main__li {
+      background-color: rgb(188, 181, 231);
+      color: white;
+      padding: 15px 15px 40px 15px; ;
+     
+      box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      
+    }
   }
   
-  &__fa-solid {
-    color: purple;
-  }
 
   &__favourite-block {
     display: flex;
@@ -76,7 +89,7 @@
   }
 
   &__favourite {
-    background-color: slateblue;
+    background-color: rgb(188, 181, 231);
     color: white;
     padding: 15px 15px 40px 15px; ;
    
@@ -105,5 +118,11 @@
   @include mobile {
     margin-bottom: 40px;
   }
+}
+
+.fa-trash{
+  height: 20px;
+  width: 20px;
+  color: purple;
 }
 
