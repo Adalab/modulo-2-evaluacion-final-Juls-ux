@@ -1,0 +1,27 @@
+// fonts
+$font-main: 'Roboto', sans-serif;
+$hader-2-size: 24px;
+$main__header-3-size: 16px;
+
+// colors
+$color-bg: #f3f4f5;
+$color-secondary: #999;
+
+
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
