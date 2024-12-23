@@ -9,14 +9,27 @@
     flex-direction: column;
     align-items: center;
   }
-  
 
+  &__fav-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
   &__fav-ul {
     background-color: salmon;
     list-style: none;
   }
+  
+  &__fa-solid {
+    color: purple;
+  }
 
-
+  &__favourite-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+  }
   &__ul-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

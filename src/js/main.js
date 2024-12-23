@@ -9,6 +9,8 @@ const inputFilter = document.querySelector('.js_inputFilter');
 
 const defaultImage = 'https://via.placeholder.com/210x295/ffffff/555555/?text=Disney';
 
+const trashBtn = document.querySelector('.js__trash');
+
 
 
 let AllCharachters = [];
@@ -62,7 +64,7 @@ const renderFavourites = () => {
     ulFav.innerHTML = html;
 
 
-    console.log('Favoritos renderizados:', favourites); // Debugging
+    console.log('Favoritos renderizados:', favourites); 
 };
 
 
@@ -126,8 +128,17 @@ const handleCkickBtn = (ev) => {
     }
 };
 
+
+
+const deleteBtn =(ev) => {
+
+}
+
+
 //SECCION DE EVENTOS
 searchBtn.addEventListener('click', handleCkickBtn);
+
+trashBtn.addEventListener('click', deleteBtn);
 
 //AL CARGAR LA PÁGINA
 
