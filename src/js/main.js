@@ -98,8 +98,7 @@ const handleFavourite = (ev) => {
         favourites.splice(favouritesIndex, 1);
         renderFavourites();
     }
-   
-
+    localStorage.setItem('favouritesCharacter', JSON.stringify(favourites));
 };
 
 
@@ -145,6 +144,9 @@ fetch('//api.disneyapi.dev/character?pageSize=50')
     });
 
 
-    localStorage.setItem('favouritesCharacter', JSON.stringify(favourites));
+if (localStorage.getItem('favouritesCharacter') !==null) {
+    favourites = JSON.parse(localStorage.getItem('favouritesCharacter'))
     renderFavourites();
+} 
+
 
