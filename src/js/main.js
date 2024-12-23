@@ -131,7 +131,9 @@ const handleCkickBtn = (ev) => {
 
 
 const deleteBtn =(ev) => {
+    let html = '';
 
+    ulFav.innerHTML = html;
 }
 
 
